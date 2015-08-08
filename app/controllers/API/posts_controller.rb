@@ -3,7 +3,7 @@ module API
     skip_before_filter :verify_authenticity_token
 
     def index
-      render json: Post.includes(:comments).all, status: :ok
+      render json: Post.all, status: :ok
     end
 
     def create
