@@ -3,7 +3,7 @@ module API
     skip_before_filter :verify_authenticity_token
 
     def index
-      render json: Post.all, status: :ok
+      render json: Post.order(id: :desc), status: :ok
     end
 
     def create
@@ -28,5 +28,7 @@ module API
     def post_params
       params.require(:post).permit(:title, :body)
     end
+
+
   end
 end
