@@ -24,6 +24,15 @@ module API
       render json: Post.find(params[:id]), status: :ok
     end
 
+    def update
+      post = Post.find(params[:id])
+      if post.update_attributes(params)
+        render json: post, status: :ok
+      else
+        render json: post, status: 422
+      end
+    end
+
     private
     def post_params
       params.require(:post).permit(:title, :body)
