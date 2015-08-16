@@ -26,7 +26,7 @@ module API
 
     def update
       post = Post.find(params[:id])
-      if post.update_attributes(params)
+      if post.update_attributes(post_params)
         render json: post, status: :ok
       else
         render json: post, status: 422
